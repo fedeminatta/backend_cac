@@ -1,8 +1,8 @@
 export default class Tarea {
-	constructor(id, texto, completado, usuario) {
+	constructor(id, texto, completada, usuario) {
 		this.id = id;
 		this.texto = texto;
-		this.completado = completado;
+		this.completada = completada;
 		this.usuario = usuario;
 	}
 }
