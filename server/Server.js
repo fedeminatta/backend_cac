@@ -1,6 +1,7 @@
 import express from 'express';
 import UsersRoutes from '../routes/users.routes.js';
 import TareasRoutes from '../routes/tareas.routes.js';
+import NotasRoutes from '../routes/notas.routes.js';
 
 export default class Server {
 	static app = express();
@@ -13,8 +14,10 @@ export default class Server {
 	static routes() {
 		const users = new UsersRoutes();
 		const tareas = new TareasRoutes();
+		const notas = new NotasRoutes();
 		Server.app.use('/users', users.router);
 		Server.app.use('/tareas', tareas.router);
+		Server.app.use('/notas', notas.router);
 	}
 
 	static runServer(port) {
