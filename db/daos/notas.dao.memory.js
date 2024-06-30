@@ -20,11 +20,12 @@ export default class NotasDaoMemory {
 	}
 
 	getNotaByTexto(texto) {
-		const result = this.notas.filter(
-			(nota) => nota.texto.toLowerCase() === texto.toLowerCase()
+		const result = this.notas.filter((nota) =>
+			nota.texto.toLowerCase().includes(texto.toLowerCase())
 		);
 		return result;
 	}
+
 	getNotaByUsuario(usuario) {
 		const result = this.notas.filter(
 			(nota) => nota.usuario.toLowerCase() === usuario.toLowerCase()

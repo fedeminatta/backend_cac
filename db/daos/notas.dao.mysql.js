@@ -13,48 +13,54 @@ export default class NotasDaoMysql extends Mysql {
 	}
 
 	#createTable() {
-		const query = `CREATE TABLE IF NOT EXISTS ${this.table} (
+		const query = `CREATE TABLE IF NOT EXISTS ?? (
             id INT PRIMARY KEY,
             texto VARCHAR(100) NOT NULL,
             usuario VARCHAR(100) NOT NULL
         )`;
-		this.connection.query(query);
+		this.connection.query(query, [this.table]);
 	}
 
 	async getAllNotas() {
-		const query = `SELECT * FROM ${this.table}`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `SELECT * FROM ??`;
+		const [result] = await this.connection.promise().query(query, [this.table]);
 		console.log(result);
 		return result;
 	}
 
 	async getNotaById(id) {
-		const query = `SELECT * FROM ${this.table} WHERE id = ${id}`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `SELECT * FROM ?? WHERE id = ?`;
+		const [result] = await this.connection
+			.promise()
+			.query(query, [this.table, id]);
 		console.log(result);
 		return result;
 	}
 
 	async getNotaByTexto(texto) {
-		const query = `SELECT * FROM ${this.table} WHERE texto = '${texto}'`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `SELECT * FROM ?? WHERE texto LIKE ?`;
+		const [result] = await this.connection
+			.promise()
+			.query(query, [this.table, `%${texto}%`]);
 		console.log(result);
 		return result;
 	}
 
 	async getNotaByUsuario(usuario) {
-		const query = `SELECT * FROM ${this.table} WHERE usuario = '${usuario}'`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `SELECT * FROM ?? WHERE usuario = ?`;
+		const [result] = await this.connection
+			.promise()
+			.query(query, [this.table, `${usuario}`]); // es necesario usar `` ya que usuario es un string
 		console.log(result);
 		return result;
 	}
 
 	async createNota(nota) {
 		const { id, texto, usuario } = nota;
-		const query = `INSERT INTO ${this.table} VALUES(?,?,?)`;
+		const query = `INSERT INTO ?? VALUES(?,?,?)`;
 		const [result] = await this.connection
 			.promise()
-			.query(query, [id, texto, usuario]);
+			.query(query, [thiss.table, id, texto, usuario]);
 
 		if (result.affectedRows > 0) {
 			return { message: 'Nota creada correctamente' };
@@ -64,9 +70,11 @@ export default class NotasDaoMysql extends Mysql {
 	}
 
 	async updateNota(nota) {
-		const { id, texto, completada } = nota;
-		const query = `UPDATE ${this.table} SET texto = ? WHERE id = ?`;
-		const [result] = await this.connection.promise().query(query, [texto, id]);
+		const { id, texto } = nota;
+		const query = `UPDATE ?? SET texto = ? WHERE id = ?`;
+		const [result] = await this.connection
+			.promise()
+			.query(query, [this.table, texto, id]);
 		if (result.affectedRows > 0) {
 			return { message: 'Nota modificada correctamente' };
 		} else {
@@ -75,8 +83,10 @@ export default class NotasDaoMysql extends Mysql {
 	}
 
 	async deleteNota(id) {
-		const query = `DELETE FROM ${this.table} WHERE id = ${id}`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `DELETE FROM ?? WHERE id = ?`;
+		const [result] = await this.connection
+			.promise()
+			.query(query, [this.table, id]);
 		if (result.affectedRows > 0) {
 			return { message: 'Nota eliminada correctamente' };
 		} else {

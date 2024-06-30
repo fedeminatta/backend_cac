@@ -20,8 +20,8 @@ export default class TareasDaoMemory {
 	}
 
 	getTareaByTexto(texto) {
-		const result = this.tareas.filter(
-			(tarea) => tarea.texto.toLowerCase() === texto.toLowerCase()
+		const result = this.tareas.filter((tarea) =>
+			tarea.texto.toLowerCase().includes(texto.toLowerCase())
 		);
 		return result;
 	}

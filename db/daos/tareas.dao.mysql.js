@@ -13,49 +13,55 @@ export default class TareasDaoMysql extends Mysql {
 	}
 
 	#createTable() {
-		const query = `CREATE TABLE IF NOT EXISTS ${this.table} (
+		const query = `CREATE TABLE IF NOT EXISTS ?? (
             id INT PRIMARY KEY,
             texto VARCHAR(100) NOT NULL,
             completada BOOLEAN NOT NULL DEFAULT FALSE,
             usuario VARCHAR(100) NOT NULL
         )`;
-		this.connection.query(query);
+		this.connection.query(query, [this.table]);
 	}
 
 	async getAllTareas() {
-		const query = `SELECT * FROM ${this.table}`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `SELECT * FROM ??`;
+		const [result] = await this.connection.promise().query(query, [this.table]);
 		console.log(result);
 		return result;
 	}
 
 	async getTareaById(id) {
-		const query = `SELECT * FROM ${this.table} WHERE id = ${id}`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `SELECT * FROM ?? WHERE id = ?`;
+		const [result] = await this.connection
+			.promise()
+			.query(query, [this.table, id]);
 		console.log(result);
 		return result;
 	}
 
 	async getTareaByTexto(texto) {
-		const query = `SELECT * FROM ${this.table} WHERE texto = '${texto}'`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `SELECT * FROM ?? WHERE texto LIKE ?`;
+		const [result] = await this.connection
+			.promise()
+			.query(query, [this.table, `%${texto}%`]);
 		console.log(result);
 		return result;
 	}
 
 	async getTareaByUsuario(usuario) {
-		const query = `SELECT * FROM ${this.table} WHERE usuario = '${usuario}'`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `SELECT * FROM ?? WHERE usuario = ?`;
+		const [result] = await this.connection
+			.promise()
+			.query(query, [this.table, `${usuario}`]); // es necesario usar `` ya que usuario es un string
 		console.log(result);
 		return result;
 	}
 
 	async createTarea(tarea) {
 		const { id, texto, completada, usuario } = tarea;
-		const query = `INSERT INTO ${this.table} VALUES(?,?,?,?)`;
+		const query = `INSERT INTO ?? VALUES(?,?,?,?)`;
 		const [result] = await this.connection
 			.promise()
-			.query(query, [id, texto, completada, usuario]);
+			.query(query, [this.table, id, texto, completada, usuario]);
 
 		if (result.affectedRows > 0) {
 			return { message: 'Tarea creada correctamente' };
@@ -66,10 +72,10 @@ export default class TareasDaoMysql extends Mysql {
 
 	async updateTarea(tarea) {
 		const { id, texto, completada } = tarea;
-		const query = `UPDATE ${this.table} SET completada = ?, texto = ? WHERE id = ?`;
+		const query = `UPDATE ?? SET completada = ?, texto = ? WHERE id = ?`;
 		const [result] = await this.connection
 			.promise()
-			.query(query, [completada, texto, id]);
+			.query(query, [this.table, completada, texto, id]);
 		if (result.affectedRows > 0) {
 			return { message: 'Tarea modificada correctamente' };
 		} else {
@@ -78,8 +84,10 @@ export default class TareasDaoMysql extends Mysql {
 	}
 
 	async deleteTarea(id) {
-		const query = `DELETE FROM ${this.table} WHERE id = ${id}`;
-		const [result] = await this.connection.promise().query(query);
+		const query = `DELETE FROM ?? WHERE id = ?`;
+		const [result] = await this.connection
+			.promise()
+			.query(query, [this.table, id]);
 		if (result.affectedRows > 0) {
 			return { message: 'Tarea eliminada correctamente' };
 		} else {
