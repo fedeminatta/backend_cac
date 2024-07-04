@@ -6,7 +6,7 @@ Programa para gestionar tareas (pendientes de hacer), notas (apuntes etc), recor
 npm run dev
 ```
 
-# iniciar el servidor en modo pro (con servidor sql)
+# iniciar el servidor en modo prod (con servidor sql)
 
 ```
 npm run prod
