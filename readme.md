@@ -12,4 +12,4 @@ npm run dev
 npm run prod
 ```
 
-En la carpeta postman se envuentrar archivos json para importar en postman y asi tener las consultas listas
+En la carpeta postman se encuentran archivos json para importar en postman y asi tener las consultas listas
