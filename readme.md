@@ -13,3 +13,13 @@ npm run prod
 ```
 
 En la carpeta postman se encuentran archivos json para importar en postman y asi tener las consultas listas
+
+Variables de entorno necesarias
+```
+PORT=
+DATABASE_NAME=
+DATABASE_PASSWORD=
+DATABASE_HOST=
+DATABASE_PORT=
+DATABASE_USER=
+```
