@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "fd8bb785-e64f-4ae7-9ad0-62a2746b279d",
+		"name": "CAC node recordatorios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "36315045"
+	},
+	"item": [
+		{
+			"name": "createRecordatorio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "recordatorio",
+							"value": "evaluacion de lengua",
+							"type": "text"
+						},
+						{
+							"key": "fecha",
+							"value": " 23/06/2024",
+							"type": "text"
+						},
+						{
+							"key": "usuario",
+							"value": "luis",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/recordatorios"
+			},
+			"response": []
+		},
+		{
+			"name": "getRecordatorios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/recordatorios"
+			},
+			"response": []
+		},
+		{
+			"name": "getByUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/recordatorios/usuario?usuario=luis",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"recordatorios",
+						"usuario"
+					],
+					"query": [
+						{
+							"key": "usuario",
+							"value": "luis"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delRecordatorio",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/recordatorios/1"
+			},
+			"response": []
+		},
+		{
+			"name": "modRecordatorio",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "recordatorio",
+							"value": "evaluacion de matematica",
+							"type": "text"
+						},
+						{
+							"key": "fecha",
+							"value": " 23/06/2024",
+							"type": "text"
+						},
+						{
+							"key": "usuario",
+							"value": "luis",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/recordatorios/"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "451be9ff-62c0-4f6c-bd59-58f9a82a3aaf",
+		"name": "CAC node tareas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "36315045"
+	},
+	"item": [
+		{
+			"name": "createTarea",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "texto",
+							"value": "lavar la ropa",
+							"type": "text"
+						},
+						{
+							"key": "completada",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "usuario",
+							"value": "pedro",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "getTareas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/tareas/1"
+			},
+			"response": []
+		},
+		{
+			"name": "getByTexto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tareas/tarea?texto=lavar la ropa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tareas",
+						"tarea"
+					],
+					"query": [
+						{
+							"key": "texto",
+							"value": "lavar la ropa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tareas/usuario?usuario=pedro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tareas",
+						"usuario"
+					],
+					"query": [
+						{
+							"key": "usuario",
+							"value": "pedro"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delTarea",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/tareas/1"
+			},
+			"response": []
+		},
+		{
+			"name": "modTarea",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "texto",
+							"value": "lavar la ropa",
+							"type": "text"
+						},
+						{
+							"key": "completada",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "usuario",
+							"value": "pedro",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/tareas/"
+			},
+			"response": []
+		}
+	]
+}

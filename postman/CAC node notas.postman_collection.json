@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "d0714d71-c660-4fa9-a310-3596426e41ab",
+		"name": "CAC node notas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "36315045"
+	},
+	"item": [
+		{
+			"name": "createNota",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "texto",
+							"value": "Recordatorio: asistir a la reunión de equipo el viernes a las 10 AM.",
+							"type": "text"
+						},
+						{
+							"key": "usuario",
+							"value": "luis",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/notas"
+			},
+			"response": []
+		},
+		{
+			"name": "getNotas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/notas"
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/notas/2"
+			},
+			"response": []
+		},
+		{
+			"name": "getByTexto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/notas/nota?texto=Revisar ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notas",
+						"nota"
+					],
+					"query": [
+						{
+							"key": "texto",
+							"value": "Revisar "
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/notas/usuario?usuario=pedro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notas",
+						"usuario"
+					],
+					"query": [
+						{
+							"key": "usuario",
+							"value": "pedro"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delNota",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/notas/1"
+			},
+			"response": []
+		},
+		{
+			"name": "modNota",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "texto",
+							"value": "Revisar los conceptos clave del capítulo 3 de la guía de programación",
+							"type": "text"
+						},
+						{
+							"key": "usuario",
+							"value": "pedro",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/notas/"
+			},
+			"response": []
+		}
+	]
+}
