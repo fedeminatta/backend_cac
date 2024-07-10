@@ -60,7 +60,7 @@ export default class NotasDaoMysql extends Mysql {
 		const query = `INSERT INTO ?? VALUES(?,?,?)`;
 		const [result] = await this.connection
 			.promise()
-			.query(query, [thiss.table, id, texto, usuario]);
+			.query(query, [this.table, id, texto, usuario]);
 
 		if (result.affectedRows > 0) {
 			return { message: 'Nota creada correctamente' };
