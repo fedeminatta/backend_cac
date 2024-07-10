@@ -1,10 +1,10 @@
 import Recordatorio from '../models/Recordatorio.js';
 
 export default class RecordatorioHelpers {
-	parseRecordatorios(data) {
+	parseRecordatorios(data, create) {
 		const { id, recordatorio, fecha, usuario } = data;
 		const result = new Recordatorio(
-			parseInt(id + Math.random() * 231),
+			create ? parseInt(id + Math.random() * 231) : parseInt(id),
 			recordatorio,
 			fecha,
 			usuario

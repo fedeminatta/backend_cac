@@ -27,7 +27,7 @@ export default class NotasControllers {
 	};
 
 	createRecordatorio = async (req, res) => {
-		const recordatorio = this.helpers.parseRecordatorios(req.body);
+		const recordatorio = this.helpers.parseRecordatorios(req.body, true);
 		const result = await this.db.createRecordatorio(recordatorio);
 		res.json(result);
 	};

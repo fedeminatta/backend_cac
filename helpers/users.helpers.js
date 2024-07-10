@@ -4,7 +4,7 @@ export default class UsersHelpers {
 	parseUsers(data) {
 		const { id, name, age } = data;
 		const user = new User(
-			parseInt(id + Math.random() * 231),
+			create ? parseInt(id + Math.random() * 231) : parseInt(id),
 			name,
 			parseInt(age)
 		);

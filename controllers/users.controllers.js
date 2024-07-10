@@ -33,7 +33,7 @@ export default class UsersControllers {
 	};
 
 	createUser = async (req, res) => {
-		const user = this.helpers.parseUsers(req.body);
+		const user = this.helpers.parseUsers(req.body, true);
 		const result = await this.db.createUser(user);
 		res.json(result);
 	};

@@ -39,7 +39,7 @@ export default class TareasControllers {
 	};
 
 	createTarea = async (req, res) => {
-		const tarea = this.helpers.parseTareas(req.body);
+		const tarea = this.helpers.parseTareas(req.body, true);
 		const result = await this.db.createTarea(tarea);
 		res.json(result);
 	};

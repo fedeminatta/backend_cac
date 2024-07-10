@@ -39,7 +39,7 @@ export default class NotasControllers {
 	};
 
 	createNota = async (req, res) => {
-		const nota = this.helpers.parseNotas(req.body);
+		const nota = this.helpers.parseNotas(req.body, true);
 		const result = await this.db.createNota(nota);
 		res.json(result);
 	};
