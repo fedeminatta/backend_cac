@@ -42,7 +42,7 @@ export default class RecordatoriosDaoMysql extends Mysql {
 		const query = `INSERT INTO ?? VALUES(?,?,?,?)`;
 		const [result] = await this.connection
 			.promise()
-			.query(query, [thiss.table, id, recordatorio, fecha, usuario]);
+			.query(query, [this.table, id, recordatorio, fecha, usuario]);
 
 		if (result.affectedRows > 0) {
 			return { message: 'Recordatorio creado correctamente' };
